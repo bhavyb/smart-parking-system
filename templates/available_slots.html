@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+<h3>Available Slots</h3>
+<div class="row">
+  {% for slot in slots %}
+  <div class="col-6 col-sm-4 col-md-3 mb-3">
+    <div
+      class="card slot-card {% if slot['is_available'] %}card-available{% else %}card-occupied{% endif %}"
+    >
+      <div class="card-body text-center">
+        <h5 class="card-title">Slot {{ slot['slot_id'] }}</h5>
+        <p class="card-text">
+          {% if slot['is_available'] %}Available{% else %}Occupied{% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

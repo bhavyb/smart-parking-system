@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<h3>Book a Slot</h3>
+{% if slots|length == 0 %}
+<div class="alert alert-warning">
+  No slots available right now. Please check later.
+</div>
+{% else %}
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input name="name" class="form-control" required />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Vehicle Number</label>
+    <input name="vehicle_no" class="form-control" required />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Phone</label>
+    <input name="phone" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Choose Slot</label>
+    <select name="slot_no" class="form-select" required>
+      {% for s in slots %}
+      <option value="{{ s['slot_id'] }}">Slot {{ s['slot_id'] }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button class="btn btn-success">Book Now</button>
+</form>
+{% endif %} {% endblock %}

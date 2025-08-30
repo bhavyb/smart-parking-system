@@ -1,0 +1,25 @@
+/* style.css - minimal custom styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f7f9fc;
+}
+
+.hero {
+    background-image: url('banner.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.card-available {
+    border-left: 6px solid #28a745;
+}
+
+.card-occupied {
+    border-left: 6px solid #dc3545;
+    opacity: 0.95;
+}
+
+.slot-card {
+    min-height: 120px;
+}

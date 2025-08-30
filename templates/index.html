@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block content %}
+<section class="hero py-5 rounded-3 mb-4">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-white">
+        <h1 class="display-5">Smart Parking Management</h1>
+        <p class="lead">
+          Find and reserve parking slots quickly. Prototype for your final-year
+          project.
+        </p>
+        <a href="{{ url_for('book_slot') }}" class="btn btn-light btn-lg me-2"
+          >Book Slot</a
+        >
+        <a
+          href="{{ url_for('slots_view') }}"
+          class="btn btn-outline-light btn-lg"
+          >View Slots</a
+        >
+      </div>
+      <div class="col-md-6 d-none d-md-block">
+        <img
+          src="{{ url_for('static', filename='images/parking-bg.jpg') }}"
+          alt="parking"
+          class="img-fluid rounded"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4>Live Slots</h4>
+    <div class="row">
+      {% for slot in slots %}
+      <div class="col-6 col-sm-4 col-md-3 mb-3">
+        <div
+          class="card slot-card {% if slot['is_available'] %}card-available{% else %}card-occupied{% endif %}"
+        >
+          <div class="card-body text-center">
+            <h5 class="card-title">Slot {{ slot['slot_id'] }}</h5>
+            <p class="card-text">
+              {% if slot['is_available'] %}Available{% else %}Occupied{% endif
+              %}
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h4>About</h4>
+    <p>
+      Prototype demonstrating booking, admin management and basic UI for Smart
+      Parking.
+    </p>
+    <ul>
+      <li>Flask backend</li>
+      <li>SQLite starter DB</li>
+      <li>Bootstrap responsive UI</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
